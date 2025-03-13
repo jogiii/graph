@@ -2,21 +2,22 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        Graph myGraph = new Graph();
-        myGraph.addVertex("A");
-        myGraph.addVertex("B");
-        myGraph.addVertex("C");
-        myGraph.addVertex("D");
+        Graph graph = new Graph();
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addVertex("C");
+        graph.addVertex("D");
+        graph.addVertex("E");
 
-        myGraph.addEdge("A", "B");
-        myGraph.addEdge("A", "C");
-        myGraph.addEdge("A", "D");
-        myGraph.addEdge("B", "D");
-        myGraph.addEdge("C", "D");
+        graph.addEdge("A", "B");
+        graph.addEdge("A", "C");
+        graph.addEdge("B", "D");
+        graph.addEdge("C", "E");
+        graph.addEdge("D", "E");
 
-        myGraph.removeVertex("D");
-
-        myGraph.printGraph();
+        graph.printGraph();
+        System.out.println("Performing BFS from A:");
+        graph.bfs("A");
 
         }
     }

@@ -1,7 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class Graph {
     private HashMap<String, ArrayList<String>> adjList = new HashMap<>();
@@ -50,4 +49,67 @@ public class Graph {
         adjList.remove(vertex);
         return true;
     }
+
+    public void bfs(String startVertex) {
+        if (!adjList.containsKey(startVertex)) {
+            System.out.println("Graph does not contain vertex " + startVertex);
+            return;
+        }
+
+        Queue<String> queue = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+
+        queue.add(startVertex);
+        visited.add(startVertex);
+
+        System.out.println("BFS Traversal for vertex " + startVertex);
+
+        while (!queue.isEmpty()) {
+            String currentVertex = queue.poll();
+            System.out.println(currentVertex);
+
+            for (String neighbor : adjList.get(currentVertex)) {
+                if (!visited.contains(neighbor)) {
+                    visited.add(neighbor);
+                    queue.add(neighbor);
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
