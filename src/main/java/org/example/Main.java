@@ -19,6 +19,10 @@ public class Main {
         System.out.println("Performing BFS from A:");
         graph.bfs("A");
 
+
+        System.out.println("DFS traversal starting from A:");
+        graph.dfs("A");
+
         }
     }
 

@@ -75,6 +75,41 @@ public class Graph {
                 }
             }
         }
+
+
+
+
+    }
+
+    public void dfs(String startVertex){
+
+        if (!adjList.containsKey(startVertex)) return;
+        HashSet<String> visited = new HashSet<>();
+        Stack<String> stack = new Stack<>();
+
+        stack.push(startVertex);
+
+        while(!stack.isEmpty()){
+            String currentVertex = stack.pop();
+
+            if(!visited.contains(currentVertex)){
+                System.out.println(currentVertex+" ");
+                visited.add(currentVertex);
+
+                //push neighbours onto the stack
+
+                List<String> neighbors = adjList.get(currentVertex);
+
+                Collections.reverse(neighbors); //reverse to maintain correct DFS order
+
+                for (String neighbor : neighbors) {
+                    if (!visited.contains(neighbor)) {
+                        stack.push(neighbor);
+                    }
+                }
+            }
+        }
+
     }
 
 
