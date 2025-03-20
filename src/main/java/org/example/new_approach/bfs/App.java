@@ -1,4 +1,4 @@
-package org.example.new_approach;
+package org.example.new_approach.bfs;
 
 public class App {
 
