@@ -9,6 +9,7 @@ public class Vertex {
     private String name;
     private boolean visited;
     private List<Vertex> adjList;
+
     public Vertex(String name) {
         this.name = name;
         this.adjList = new ArrayList<Vertex>();
