@@ -2,32 +2,41 @@ package org.example.new_approach.dfs.with_recursion;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class App {
 
     public static void main(String[] args) {
 
-        Vertex v1 = new Vertex("A");
-        Vertex v2 = new Vertex("B");
-        Vertex v3 = new Vertex("C");
-        Vertex v4 = new Vertex("D");
-        Vertex v5 = new Vertex("E");
+        int vertexCount = 40000;  // Large number of vertices
+        Random random = new Random();
 
-        List<Vertex> list = new ArrayList<Vertex>();
+        // Create vertices
+        List<Vertex> vertices = new ArrayList<>();
+        for (int i = 0; i < vertexCount; i++) {
+            vertices.add(new Vertex("V" + i));
+        }
 
-        v1.addNeighbour(v2);
-        v1.addNeighbour(v3);
-        v3.addNeighbour(v4);
-        v4.addNeighbour(v5);
+        // Randomly connect vertices
+        for (int i = 0; i < vertexCount; i++) {
+            int edges = random.nextInt(5) + 1; // Each vertex has 1-5 random neighbors
+            for (int j = 0; j < edges; j++) {
+                int neighborIndex = random.nextInt(vertexCount);
+                if (neighborIndex != i) {
+                    vertices.get(i).addNeighbour(vertices.get(neighborIndex));
+                }
+            }
+        }
 
-
-        list.add(v1);
-        list.add(v2);
-        list.add(v3);
-        list.add(v4);
-        list.add(v5);
+        // Perform DFS
         DepthFirstSearchRecursion dfs = new DepthFirstSearchRecursion();
-        dfs.dfs(list);
+
+        long startTime = System.currentTimeMillis();
+        dfs.dfs(vertices);
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("\nDFS Execution Time: " + (endTime - startTime) + " ms");
+
 
     }
 }
