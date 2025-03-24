@@ -54,17 +54,24 @@ public class MazeSolverIterative {
         return false; // stack is empty, no path exists
     }
 
-    private static boolean isFeasible(int[][] maze, boolean[][] visited, int x, int y) {
-        int rows = maze.length;
-        int cols = maze[0].length;
-
-        // Check boundaries FIRST to avoid ArrayIndexOutOfBoundsException
-        if (x < 0 || x >= rows || y < 0 || y >= cols) {
+    private static boolean isFeasible(int[][] maze,boolean[][] visited,int x, int y){
+        // we check the vertical dimension
+        if(x<0 || x>maze.length-1)
             return false;
-        }
 
-        // Check if the cell is a wall (1) or already visited
-        return maze[x][y] != 1 && !visited[x][y];
+        //we check the horizontal dimension
+        if(y<0 || y> maze.length-1)
+            return false;
+
+        // we have already considered that state
+        if(visited[x][y])
+            return false;
+
+        // there is an obstacle in the way
+        if(maze[x][y] == 1)
+            return false;
+
+        return true;
     }
 
 
