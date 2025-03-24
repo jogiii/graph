@@ -47,5 +47,8 @@ So the solution should be something like this (S represents the states in the so
 
         MazeSolver mazeSolver = new MazeSolver(map,1,0);
         mazeSolver.findWay();
+
+        MazeSolverIterative    mazeSolverIterative = new MazeSolverIterative();
+        mazeSolverIterative.solveMaze(map,1,0);
     }
 }
